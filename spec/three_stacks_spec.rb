@@ -2,8 +2,8 @@
 require_relative 'spec_helper'
 require_relative '../lib/stack'
 
-describe CTCI::Ch3::ThreeStacks do
-  let(:ts) {CTCI::Ch3::ThreeStacks.new}
+describe Ch3::ThreeStacks do
+  let(:ts) {Ch3::ThreeStacks.new}
 
   describe "#new" do
     it {should be_empty}

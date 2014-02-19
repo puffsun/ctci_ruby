@@ -1,12 +1,12 @@
 require_relative 'spec_helper'
 require_relative '../lib/stack'
 
-describe CTCI::Ch3::Stack do
+describe Ch3::Stack do
 
-  let(:stack) {CTCI::Ch3::Stack.new}
+  let(:stack) {Ch3::Stack.new}
 
   describe "#new" do
-    it {should be_an_instance_of CTCI::Ch3::Stack}
+    it {should be_an_instance_of Ch3::Stack}
     it {should respond_to :pop}
     it {should respond_to :push}
     it {should respond_to :peek}

@@ -1,12 +1,12 @@
 require_relative "spec_helper"
 require_relative "../lib/queue"
 
-describe CTCI::Ch3::Queue do
-  let (:queue) {CTCI::Ch3::Queue.new}
+describe Ch3::Queue do
+  let (:queue) {Ch3::Queue.new}
 
   describe "#new" do
     it {should be_empty}
-    it {should be_an_instance_of CTCI::Ch3::Queue}
+    it {should be_an_instance_of Ch3::Queue}
     it {should respond_to :enq}
     it {should respond_to :deq}
     it {should respond_to :empty?}
