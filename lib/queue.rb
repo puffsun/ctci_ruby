@@ -50,4 +50,57 @@ module Ch3
       @stack1.size + @stack2.size
     end
   end
+
+  class AnimalQueue
+    def initialize
+      @dogs = []
+      @cats = []
+    end
+
+    def enq(a)
+      raise ArgumentError unless a
+      if a.instance_of? Cat
+        @cats << a
+      elsif a.instance_of? Dog
+        @dogs << a
+      else
+        raise StandardError, "Unsupported animal type."
+      end
+      self
+    end
+
+    def deq_cat
+      @cats.shift
+    end
+
+    def deq_dog
+      @dogs.shift
+    end
+
+    def deq_any
+      return @dogs.shift if @cats.empty?
+      return @cats.shift if @dogs.empty?
+      @dogs[0].found < @cats[0].found ? @dogs.shift : @cats.shift
+    end
+
+    def empty?
+      @dogs.empty? && @cats.empty?
+    end
+  end
+
+  class Animal
+    attr_reader :found
+    attr_accessor :name
+
+    def initialize(name)
+      @name = name
+      @found = Time.now
+    end
+  end
+
+  class Cat < Animal
+  end
+
+  class Dog < Animal
+  end
 end
