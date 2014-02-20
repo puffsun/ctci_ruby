@@ -1,4 +1,3 @@
-require_relative "spec_helper"
 require_relative "../../lib/queue"
 
 describe Ch3::Queue do

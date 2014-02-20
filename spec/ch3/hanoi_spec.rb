@@ -1,6 +1,5 @@
 
 
-require_relative 'spec_helper'
 require_relative '../../lib/hanoi'
 
 describe Ch3::HanoiTower do
