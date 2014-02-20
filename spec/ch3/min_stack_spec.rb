@@ -1,6 +1,6 @@
 
 require_relative 'spec_helper'
-require_relative '../lib/stack'
+require_relative '../../lib/stack'
 
 describe Ch3::MinStack do
   let(:ms) {Ch3::MinStack.new}

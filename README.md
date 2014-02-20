@@ -7,4 +7,4 @@ Source code and RSpec tests included
 You can run the tests by simply type <code>rake</code> inside the root directory of the source code, see Rakefile for details.
 
 ###TODO
-New solutions and tests will be added into the repository in future, please keep watching.
+New solutions and tests will be added into the repository in future, please keep watching for further updating.

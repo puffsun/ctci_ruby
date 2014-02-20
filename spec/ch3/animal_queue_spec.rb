@@ -1,6 +1,6 @@
 
 require_relative 'spec_helper'
-require_relative '../lib/queue'
+require_relative '../../lib/queue'
 
 describe Ch3::AnimalQueue do
   let(:animal_q) {Ch3::AnimalQueue.new}

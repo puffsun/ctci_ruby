@@ -1,7 +1,7 @@
 
 
 require_relative 'spec_helper'
-require_relative '../lib/hanoi'
+require_relative '../../lib/hanoi'
 
 describe Ch3::HanoiTower do
   let(:hanoi) {Ch3::HanoiTower.new(0)}
