@@ -36,7 +36,7 @@ module Ch4
     private
 
     def check_index(v)
-     raise ArgumentError if v < 0 || v > @vertexes
+      raise ArgumentError if v < 0 || v > @vertexes
     end
   end
 
@@ -100,5 +100,40 @@ module Ch4
   end
 
   class DepthFirstPaths
+
+    def initialize(graph = Graph.new, src = 0)
+      @src = src
+      @marked = []
+      @edge_to = []
+      dfs(graph, src)
+    end
+
+    def path_to?(dst)
+      @marked[dst]
+    end
+
+    def path_to(dst)
+      return nil unless path_to?(dst)
+      path = []
+      last_vertex = @edge_to[dst]
+      path << @src
+      until last_vertex == @src
+        path << last_vertex
+        last_vertex = @edge_to[last_vertex]
+      end
+      path << dst
+    end
+
+    private
+
+    def dfs(graph, src)
+      @marked[src] = true
+      graph.adj(src).each do |v|
+        unless @marked[v]
+          @edge_to[v] = src
+          dfs(graph, v)
+        end
+      end
+    end
   end
 end

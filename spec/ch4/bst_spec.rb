@@ -16,6 +16,7 @@ describe Ch4::BinSearchTree do
     it {should respond_to :include?}
     it {should respond_to :min}
     it {should respond_to :delete_min}
+    it {should respond_to :bst?}
 
     it {should respond_to :pre_order}
     it {should respond_to :in_order}
@@ -31,6 +32,8 @@ describe Ch4::BinSearchTree do
       bst.size.should eql(3)
       bst.include?(:a).should be_true
       bst.include?(:z).should be_false
+      bst.bst?.should be_true
+
       bst.get(:a).should eql("a")
       bst.get(:c).should eql("c")
       bst.get(:z).should be_nil

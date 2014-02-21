@@ -16,6 +16,7 @@ describe Ch4::BinaryTree do
     it {should respond_to :in_order}
     it {should respond_to :post_order}
     it {should respond_to :balanced?}
+    it {should respond_to :include_tree?}
   end
 
   describe "perform Binary Tree operations" do
@@ -38,6 +39,19 @@ describe Ch4::BinaryTree do
       bt.balanced?.should be_true
       bt.put(:d, "d").put(:e, "e")
       bt.balanced?.should be_false
+    end
+  end
+
+  describe "to match another tree" do
+    before do
+      @tree1 = Ch4::BinaryTree.new
+      @tree1.put(:e, "e").put(:b, "b").put(:a, "a").put(:c, "c").put(:f, "f")
+      @tree2 = Ch4::BinaryTree.new
+      @tree2.put(:b, "b").put(:a, "a").put(:c, "c")
+    end
+
+    it "should match" do
+      @tree1.include_tree?(@tree2.root).should be_true
     end
   end
 end

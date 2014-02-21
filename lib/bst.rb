@@ -141,6 +141,15 @@ module Ch4
       result << node.value
       result.flatten
     end
+
+    # 4.5 Implement a function to check if a binary tree
+    # is a binary search tree.
+    def bst?(node = @root, min = nil, max = nil)
+      return true if node.nil?
+      return false if (min != nil && node.key < min)
+      return false if (max != nil && node.key > max)
+      bst?(node.left, min, node.key) && bst?(node.right, node.key, max)
+    end
   end
 
 end
