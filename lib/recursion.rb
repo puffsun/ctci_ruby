@@ -103,6 +103,44 @@ module Ch9
     end
     result
   end
+
+  # Given an input file with four billion non-negative integers,
+  # provide an algorithm to generate which is not contained in the file.
+  # Assume you have 1 GB of memory available for this task.
+  # TODO what if we only have 10 MB of memory available
+  def find_missing_integer(file)
+    raise ArgumentError unless file
+    num_ints = 2**31 + 1
+    bit_field = Array.new(num_ints / 8) {|e| e = 0}
+    file.each_line do |line|
+      line.strip.split(' ').each {|n| bit_field[n/8] |= 1 << (n % 8)}
+    end
+
+    bit_field.each do |b|
+      for i in 0..8 do
+        return (b * 8 + i) if ((bit_field[i] & (1 << j)) == 0)
+      end
+    end
+  end
+
+  # Given an array with all the numbers from 1 to N, where N is at most 32000.
+  # The array may have duplicate entries and you don't know what N is. With
+  # only 4 kilobytes of memory available, how would you print all duplicate
+  # elements in the array?
+  def find_duplicates(ary)
+    raise ArgumentError unless ary
+    result = []
+    bf = Ch9::BitField.new(32000)
+    ary.each do |num|
+      actual_num = num - 1
+      if bf[actual_num]
+        result << num
+      else
+        bf[actual_num] = 1
+      end
+    end
+    result
+  end
 end
 
 if __FILE__ == $0
