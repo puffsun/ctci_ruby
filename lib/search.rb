@@ -12,4 +12,7 @@ module Ch11
       binary_search(ary, item, 0, mid - 1)
     end
   end
+
+  #def self.find_in_matrix(matrix, item)
+  #end
 end

@@ -50,6 +50,17 @@ describe "Sorting algorithms" do
     end
   end
 
+  describe "heap sort" do
+    before do
+      @ary.shuffle!
+    end
+
+    it "should be sorted after sorting" do
+      Ch11::heap_sort(@ary).should eql(%w[a b c d e])
+      Ch11::heap_sort!(@ary).should eql(%w[a b c d e])
+    end
+  end
+
   describe "bucket sort" do
     before do
       @a = [2, 3, 2, 1, 4, 5, 4, 2, 3, 1, 3, 3]

@@ -85,7 +85,45 @@ module Ch11
     bucket_sort!(ary.dup, m, n)
   end
 
+  def self.heap_sort(ary)
+    heap_sort!(ary.clone)
+  end
+
+  def self.heap_sort!(ary)
+    build_max_heap(ary)
+    (ary.size - 1).downto(1) do |i|
+      ary[0], ary[i] = ary[i], ary[0]
+      max_heapify(ary, i, 0)
+    end
+    ary
+  end
+
   private
+
+  def self.build_max_heap(ary)
+    (ary.size/2 - 1).downto(0) do |i|
+      max_heapify(ary, ary.size, i)
+    end
+    ary
+  end
+
+  def self.max_heapify(ary, size, i)
+    l = 2*i + 1
+    r = 2*i + 2
+    if l < size and ary[l] > ary[i]
+      largest = l
+    else
+      largest = i
+    end
+
+    if r < size and ary[r] > ary[largest]
+      largest = r
+    end
+    if (largest != i)
+      ary[i], ary[largest] = ary[largest], ary[i]
+      max_heapify(ary, size, largest)
+    end
+  end
 
   def self.merge(ary1, ary2)
     sorted = []
@@ -93,5 +131,27 @@ module Ch11
       ary1.first < ary2.first ? sorted << ary1.shift : sorted << ary2.shift
     end
     sorted + ary1 + ary2
+  end
+
+  public
+
+  # Write a method to sort an array of strings so that all the anagrams are next to each other.
+  def self.move_anagram_togather(ary)
+    raise ArgumentError unless ary
+    container = {}
+    ary.each do |word|
+      # do not change original word at all
+      sorted_word = quick_sort(word)
+      container[sorted_word] ||= []
+      container[sorted_word] << word
+    end
+
+    index = 0
+    container.each do |k, v|
+      v.each do |word|
+        ary[index] = word
+        index += 1
+      end
+    end
   end
 end
