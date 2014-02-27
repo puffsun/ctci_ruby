@@ -37,6 +37,21 @@ module Ch11
     selection_sort!(ary.dup)
   end
 
+  def self.insertion_sort(ary)
+    insertion_sort!(ary.dup)
+  end
+
+  def self.insertion_sort!(ary)
+    (1..ary.length - 1).each do |i|
+      value_to_insert = array.delete_at(i)
+      insert_index = i
+      while insert_index > 0 && value_to_insert < ary[insert_index - 1]
+        insert_index -= 1
+      end
+      ary.insert(insert_index, value_to_insert)
+    end
+  end
+
   def self.merge_sort(ary)
     merge_sort!(ary.dup)
   end
