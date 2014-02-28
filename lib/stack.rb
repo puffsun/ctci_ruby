@@ -1,5 +1,5 @@
 
-require_relative 'min_max.rb'
+require_relative 'min_max'
 
 module Ch3
   class Stack

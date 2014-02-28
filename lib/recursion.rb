@@ -94,7 +94,7 @@ module Ch9
     return result << "" if str.length == 0
 
     first_char = str[0]
-    reminder = str[1..str.size]
+    reminder = str[1...str.size]
     words = permutation(reminder)
     words.each do |w|
       0.upto(w.length) do |i|

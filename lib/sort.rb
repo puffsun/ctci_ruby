@@ -3,6 +3,25 @@ require 'pry'
 require 'pry-debugger'
 
 module Ch11
+
+  # select the kth element
+  def quick_select(ary, k)
+    return -1 if k > ary.size
+    arr = ary.dup
+    loop do
+      pivot = arr.delete_at(rand(arr.length))
+      left, right = arr.partition {|x| x < pivot}
+      if k == left.length
+        return pivot
+      elsif k < left.length
+        arr = left
+      else
+        k = k - left.length - 1
+        arr = right
+      end
+    end
+  end
+
   def self.bubble_sort!(ary)
     raise ArgumentError unless ary
     loop do
