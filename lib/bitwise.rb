@@ -1,7 +1,7 @@
 
 module Bitwise
   def self.get_bit(num, i)
-    ((num & (1 << i)) != 0)
+    ((num & (1 << i)) == 0) ? 0 : 1
   end
 
   def self.set_bit(num, i)
