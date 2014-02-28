@@ -100,7 +100,7 @@ module Ch11
   #
   # Care should taken that you do not make a off by 1 error.
   def self.bucket_sort!(ary, m, n = ary.length)
-    buckets = Array.new(m + 1) {|e| e = 0}
+    buckets = Array.new(m + 1, 0)
     for i in (0...n)
       buckets[ary[i]] += 1
     end
