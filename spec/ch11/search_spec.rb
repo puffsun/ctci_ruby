@@ -3,15 +3,24 @@ require 'matrix'
 require_relative '../../lib/search'
 
 describe "Searching algorithms" do
+  before do
+    @ary = [1, 3, 6, 10, 15]
+  end
 
-  describe "binary search" do
-    before do
-      @ary = %w[1 3 6 10 15]
+  describe "quick select" do
+    it "should return the kth element" do
+      Ch11::quick_select(@ary, 2).should eql(6)
     end
 
+    it "should return -1 if the kth element doesn't exist" do
+      Ch11::quick_select(@ary, 10).should eql(-1)
+    end
+  end
+
+  describe "binary search" do
     it "should return the element if exist" do
-      Ch11::binary_search(@ary, "6").should eql(2)
-      Ch11::binary_search(@ary, "11").should eql(-1)
+      Ch11::binary_search(@ary, 6).should eql(2)
+      Ch11::binary_search(@ary, 11).should eql(-1)
     end
   end
 

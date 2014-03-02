@@ -28,6 +28,17 @@ describe "Sorting algorithms" do
     end
   end
 
+  describe "insertion sort" do
+    before do
+      @ary.shuffle!
+    end
+
+    it "should be sorted after sorting" do
+      Ch11::insertion_sort(@ary).should eql(%w[a b c d e])
+      Ch11::insertion_sort!(@ary).should eql(%w[a b c d e])
+    end
+  end
+
   describe "merge sort" do
     before do
       @ary.shuffle!

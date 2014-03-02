@@ -4,24 +4,6 @@ require 'pry-debugger'
 
 module Ch11
 
-  # select the kth element
-  def quick_select(ary, k)
-    return -1 if k > ary.size
-    arr = ary.dup
-    loop do
-      pivot = arr.delete_at(rand(arr.length))
-      left, right = arr.partition {|x| x < pivot}
-      if k == left.length
-        return pivot
-      elsif k < left.length
-        arr = left
-      else
-        k = k - left.length - 1
-        arr = right
-      end
-    end
-  end
-
   def self.bubble_sort!(ary)
     raise ArgumentError unless ary
     loop do
@@ -62,13 +44,14 @@ module Ch11
 
   def self.insertion_sort!(ary)
     (1..ary.length - 1).each do |i|
-      value_to_insert = array.delete_at(i)
+      value_to_insert = ary.delete_at(i)
       insert_index = i
       while insert_index > 0 && value_to_insert < ary[insert_index - 1]
         insert_index -= 1
       end
       ary.insert(insert_index, value_to_insert)
     end
+    ary
   end
 
   def self.merge_sort(ary)
