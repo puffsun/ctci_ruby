@@ -1,4 +1,7 @@
 
+require 'pry'
+require 'pry-debugger'
+
 module DP
   # On a positive integer, you can perform any one of the following 3 steps.
   #   1.) Subtract 1 from it. (n = n-1),
@@ -23,23 +26,17 @@ module DP
 
   # the Longest Increasing Subsequence problem is to find the
   # longest increasing subsequence of a given sequence.
-  # TODO not finish yet.
   def self.longest_increase_subseq(ary)
     raise ArgumentError unless ary
-    seq = Array.new(ary.size)
+    seq = Array.new(ary.size, -1)
     0.upto(ary.size - 1) do |i|
       seq[i] = 1
-      0.upto(ary.size - 1) do |j|
-        if ary[i] > ary[j] and seq[i] < seq[j]
+      0.upto(i-1) do |j|
+        if ary[i] > ary[j]
           seq[i] = seq[j] + 1
         end
       end
     end
-    0.upto(seq.size - 2) do |i|
-      if seq[i] == 1
-        l = i, r = 0, largest = 0
-      end
-      largest = seq[i] if largest < seq[i]
-    end
+    seq.max
   end
 end

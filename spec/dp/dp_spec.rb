@@ -31,7 +31,7 @@ describe "Dynamic Programming Problems" do
     end
 
     it "should find the longest subsequence" do
-      DP::longest_increase_subseq(@ary).should eql([1, 2, 3, 9, 10])
+      DP::longest_increase_subseq(@ary).should == 5
     end
   end
 end

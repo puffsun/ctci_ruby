@@ -11,7 +11,6 @@ module Ch11
     loop do
       pivot = arr.delete_at(rand(arr.length))
       left, right = arr.partition {|x| x < pivot}
-      puts "pivot: #{pivot}, left: #{left}, right: #{right}"
       if k == left.length
         return pivot
       elsif k < left.length
