@@ -73,4 +73,19 @@ describe "Modest questions" do
       Ch17::max_sum(@ary).should == 7
     end
   end
+
+  describe "a pair of elements sum to a number" do
+    before do
+      @ary = [2, 3, -8, -1, 1, 4, -2, 5, 0]
+    end
+
+    it "should raise error with illegal arguments" do
+      expect {Ch17::pair_sum(nil, 0)}.to raise_error(ArgumentError)
+    end
+
+    it "should return all pairs if exist" do
+      Ch17::pair_sum(@ary, 5).should include([2, 3])
+      Ch17::pair_sum(@ary, 5).should include([0, 5])
+    end
+  end
 end

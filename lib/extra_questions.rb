@@ -182,4 +182,17 @@ module Ch17
     end
     max
   end
+
+  def self.pair_sum(ary, num)
+    raise ArgumentError unless ary
+    pairs = {}
+    0.upto(ary.size - 1) do |i|
+      1.upto(ary.size - 1) do |j|
+        pairs[ary[i] + ary[j]] ||= Set.new
+        # sort the pair before insert it into result
+        pairs[ary[i] + ary[j]] << [ary[i], ary[j]].sort!
+      end
+    end
+    pairs[num]
+  end
 end
