@@ -19,9 +19,4 @@ describe "convert to binary linked list" do
   it "should return nil with nil argument" do
     Ch17::convert_to_bi_linkedlist(nil).should be_nil
   end
-
-  it "should return a BiNode" do
-    Ch17::convert_to_bi_linkedlist(Ch17::BiNode.new).should be_an_instance_of(Ch17::BiNode)
-  end
-
 end
