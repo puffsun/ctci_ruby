@@ -53,10 +53,24 @@ describe "Modest questions" do
     end
 
     it "should print correct english phrase" do
-      Ch17::english_of_integer(156).should eql "One Hundred Fifty Six"
-      Ch17::english_of_integer(-156).should eql "Negative One Hundred Fifty Six"
+      Ch17::english_of_integer(156).strip.should eql "One Hundred Fifty Six"
+      Ch17::english_of_integer(-156).strip.should eql "Negative One Hundred Fifty Six"
       Ch17::english_of_integer(0).should eql "Zero"
-      Ch17::english_of_integer(1156).should eql "One Thousand One Hundred Fifty Six"
+      Ch17::english_of_integer(1156).strip.should eql "One Thousand One Hundred Fifty Six"
+    end
+  end
+
+  describe "get max sum of the contiguous sequence" do
+    before do
+      @ary = [2, 3, -8, -1, 2, 4, -2, 3]
+    end
+
+    it "should raise error if pass in nil" do
+      expect {Ch17::max_sum(nil)}.to raise_error(ArgumentError)
+    end
+
+    it "should return the max sum" do
+      Ch17::max_sum(@ary).should == 7
     end
   end
 end

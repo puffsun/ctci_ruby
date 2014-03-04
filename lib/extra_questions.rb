@@ -121,26 +121,21 @@ module Ch17
   end
 
   # Given any integer, print an English phrase that describes the integer
-  # TODO not finish yet
   def self.english_of_integer(num)
     raise ArgumentError unless num.is_a?(Integer)
-    return "Zero" if num < 0
+    return "Zero" if num == 0
     return "Negative #{english_of_integer(-num)}" if num < 0
-    result = ""
-    if num >= 10**6
-      m = num.divmod(10**6)
-      result << "#{m[0]} Million "
-    end
-    if m[1] > 10**3
-      t = m[1].divmod(10**3)
-      result << "#{t[0]} Thousand "
-    end
-    if t[1] > 10**2
-      h = t[1].divmod(10**2)
-      result << "#{h[0]} Hundred "
-    end
 
-    result
+    count = 0
+    str = ""
+    while num > 0
+      if num % 1000 != 0
+        str = num_to_str_100(num % 1000) + BIGS[count] + " " + str
+      end
+      num /= 1000
+      count += 1
+    end
+    str
   end
 
   private
@@ -148,8 +143,43 @@ module Ch17
   DIGITS = %w[One Two Three Four Five Six Seven Eight Nine]
   TEENS = %w[Eleven Twelve Thirteen Fourteen Fifteen Sixteen Seventeen Eighteen Nineteen]
   TENS = %w[Ten Twenty Thirty Forty Fifty Sixty Seventy Eighty Ninety]
-  BIGs = %w[Hundred Thousand Million]
+  BIGS = ["", "Thousand", "Million"]
+
+  def self.num_to_str_100(num)
+    str = ""
+    if num >= 100
+      str += DIGITS[num/100 - 1] + " Hundred "
+      num %= 100
+    end
+
+    if num >= 11 && num <= 19
+      return str + TEENS[num - 11] + " "
+    elsif num == 10 || num >= 20
+      str += TENS[num/10 - 1] + " "
+      num %= 10
+    end
+
+    if num >= 1 && num <= 9
+      str += DIGITS[num - 1] + " "
+    end
+    str
+  end
 
   public
 
+  # You are given an array of integers (both positive and negative).
+  # Find the contiguous sequence with the largest sum. Return the sum.
+  def self.max_sum(ary)
+    raise ArgumentError unless ary
+    sum = max = 0
+    ary.inject do |r, e|
+      sum += e
+      if max < sum
+        max = sum
+      elsif sum < 0
+        sum = 0
+      end
+    end
+    max
+  end
 end
