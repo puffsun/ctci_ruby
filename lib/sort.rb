@@ -29,7 +29,7 @@ module Ch11
       (i+1).upto(ary.size-1) do |j|
         min_index = j if ary[j] < ary[min_index]
       end
-      ary[i], ary[min_index] = ary[min_index], ary[i]
+      ary[i], ary[min_index] = ary[min_index], ary[i] if min_index != i
     end
     ary
   end
