@@ -23,7 +23,7 @@ describe "Dynamic Programming Problems" do
 
   describe "Longest Increasing Subsequence" do
     before do
-      @ary = [8, 7, 1, 3, 5, 9, 10, 2, 4, 6]
+      @ary = [3, 2, 6, 4, 5, 1]
     end
 
     it "should raise ArgumentError if passed in nil" do
@@ -31,7 +31,7 @@ describe "Dynamic Programming Problems" do
     end
 
     it "should find the longest subsequence" do
-      DP::longest_increase_subseq(@ary).should == 5
+      DP::longest_increase_subseq(@ary).should eql([2, 4, 5])
     end
   end
 end

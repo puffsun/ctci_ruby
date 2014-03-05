@@ -28,15 +28,20 @@ module DP
   # longest increasing subsequence of a given sequence.
   def self.longest_increase_subseq(ary)
     raise ArgumentError unless ary
-    seq = Array.new(ary.size, -1)
-    0.upto(ary.size - 1) do |i|
-      seq[i] = 1
-      0.upto(i-1) do |j|
-        if ary[i] > ary[j]
-          seq[i] = seq[j] + 1
+    # seq[i] - a array, which is the LIS of ary that ends with ary[i]
+    seq = Array.new(ary.size) {|e| e = []}
+    # seq[0] = [ary[0]], which acts a initial condition
+    seq[0] << ary[0]
+    # ary[i] = MAX(seq[j] | j < i, ary[j] < ary[i]) + ary[i]
+    # https://www.youtube.com/watch?v=4fQJGoeW5VE
+    1.upto(ary.size - 1) do |i|
+      0.upto(i - 1) do |j|
+        if (ary[j] < ary[i]) and (seq[i].size < seq[j].size + 1)
+          seq[i] = seq[j].dup
         end
       end
+      seq[i] << ary[i]
     end
-    seq.max
+    seq.max_by {|e| e.size}
   end
 end
