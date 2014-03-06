@@ -4,6 +4,27 @@ require 'pry-debugger'
 
 module Ch11
 
+  # given a sorted array,
+  # find the first element that larger than key
+  def self.first_larger(ary, key, low = 0, high = ary.length - 1)
+    raise ArgumentError unless ary and key > 0
+    return ary[low] if (low > high) and (low < ary.size)
+    mid = (low + high) / 2
+    if ary[mid] == key
+      cur_index = mid
+    elsif ary[mid] < key
+      return first_larger(ary, key, mid + 1, high)
+    else
+      return first_larger(ary, key, low, mid - 1)
+    end
+
+    while (cur_index + 1 < ary.size) and (ary[cur_index + 1] == ary[cur_index])
+      cur_index += 1
+    end
+    return ary[cur_index + 1] if ary[cur_index + 1] != nil
+    -1
+  end
+
   # select the kth element
   def self.quick_select(ary, k)
     return -1 if k > ary.size

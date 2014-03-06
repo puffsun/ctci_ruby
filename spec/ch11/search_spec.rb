@@ -7,6 +7,26 @@ describe "Searching algorithms" do
     @ary = [1, 3, 6, 10, 15]
   end
 
+  describe "search the first element that larger then key" do
+    before do
+      @corner_case = [2, 2, 2, 2, 2, 2]
+      @corner_case2 = [3, 5, 7]
+    end
+
+    it "should raise Argument Error if pass in illegal arguments" do
+      expect {Ch11::first_larger(@ary, -1)}.to raise_error(ArgumentError)
+    end
+
+    it "should return the first larget element" do
+      Ch11::first_larger(@ary, 6).should == 10
+    end
+
+    it "should behaive correctly on corner cases" do
+      Ch11::first_larger(@corner_case, 2).should == -1
+      Ch11::first_larger(@corner_case2, 6).should == 7
+    end
+  end
+
   describe "quick select" do
     it "should return the kth element" do
       Ch11::quick_select(@ary, 2).should eql(6)
