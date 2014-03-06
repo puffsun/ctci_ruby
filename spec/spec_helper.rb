@@ -8,4 +8,12 @@ module Helper
     raise ArgumentError unless ary
 
   end
+
+  def build_singular_linked_list(ary)
+    raise ArgumentError unless ary
+    root = Ch2::Node.new(ary.shift, nil)
+    ary.each do |e|
+      cur_node = Node.new(e, nil)
+    end
+  end
 end
