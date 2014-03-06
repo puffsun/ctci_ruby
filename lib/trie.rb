@@ -54,7 +54,6 @@ class Hash
       yield(path, object)
     end
   end
-
 end
 
 
@@ -127,7 +126,7 @@ class Trie
 
 end
 
-
+=begin
 trie = Trie.new
 p Trie.hash
 
@@ -174,7 +173,7 @@ Trie.hash.each_trie_path { |path, value| paths.push([ path ]) }
 puts
 paths.each { |x| p x }
 puts
-
+=end
 
 #------------------------------------------------------
 
@@ -225,10 +224,9 @@ class Trie
 
     ret == {} ? true : false   # {} is the default value created by Trie.hash or Hash.new_nested_hash respectively
   end
-
 end
 
-
+=begin
 trie = Trie.new
 trie << "word"
 pp Trie.hash
@@ -241,7 +239,7 @@ pp Trie.hash            # {"w"=>{"o"=>{"r"=>{"d"=>{true=>{}, "2"=>{true=>{}}}}}}
 trie << ""
 p trie.match("")
 pp Trie.hash
-
+=end
 
 #------------------------------------------
 
@@ -384,45 +382,47 @@ class Trie
     end
     return true
   end
-
 end
 
+=begin
+if __FILE__ == $0
+  trie = Trie.new
+  trie << "word"
+  pp Trie.hash
+  p trie.match("word")
+  p trie.match("word2")
+  trie << "word2"
+  p trie.match("word2")
+  pp Trie.hash            # {:root=>{"w"=>{"o"=>{"r"=>{"d"=>{true=>{}, "2"=>{true=>{}}}}}}}}
 
-trie = Trie.new
-trie << "word"
-pp Trie.hash
-p trie.match("word")
-p trie.match("word2")
-trie << "word2"
-p trie.match("word2")
-pp Trie.hash            # {:root=>{"w"=>{"o"=>{"r"=>{"d"=>{true=>{}, "2"=>{true=>{}}}}}}}}
+  trie << ""
+  p trie.match("")
+  pp Trie.hash
 
-trie << ""
-p trie.match("")
-pp Trie.hash
+  puts
 
-puts
+  p trie.match2("word")
+  p trie.mfpw("wor")     # match first part of word
 
-p trie.match2("word")
-p trie.mfpw("wor")     # match first part of word
+  puts
 
-puts
+  trie.add_int(8512)
+  pp Trie.hash
+  p trie.matchi(8512)
+  p trie.matchi(85)
+  p trie.mfpi(85)     # match first part of integer
+  p trie.matchi(51)
 
-trie.add_int(8512)
-pp Trie.hash
-p trie.matchi(8512)
-p trie.matchi(85)
-p trie.mfpi(85)     # match first part of integer
-p trie.matchi(51)
+  puts
 
-puts
-
-puts
-pp Trie.hash
-paths = []
-Trie.hash.each_trie_path { |path, value| paths.push([ path ]) }
-#Trie.hash.each_trie_path { |path, value| paths.push([ path, value ]) }
-#pp paths
-puts
-paths.each { |x| p x }
-puts
+  puts
+  pp Trie.hash
+  paths = []
+  Trie.hash.each_trie_path { |path, value| paths.push([ path ]) }
+  #Trie.hash.each_trie_path { |path, value| paths.push([ path, value ]) }
+  #pp paths
+  puts
+  paths.each { |x| p x }
+  puts
+end
+=end

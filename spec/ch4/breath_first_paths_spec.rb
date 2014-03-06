@@ -1,5 +1,5 @@
 
-require_relative '../../lib/graph'
+require_relative '../spec_helper'
 
 describe Ch4::BreadthFirstPaths do
 

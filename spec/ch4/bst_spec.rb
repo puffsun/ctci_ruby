@@ -1,5 +1,5 @@
 
-require_relative '../../lib/bst'
+require_relative '../spec_helper'
 
 describe Ch4::BinSearchTree do
   let(:bst) {Ch4::BinSearchTree.new}

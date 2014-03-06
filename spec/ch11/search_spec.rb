@@ -1,6 +1,6 @@
 
 require 'matrix'
-require_relative '../../lib/search'
+require_relative '../spec_helper'
 
 describe "Searching algorithms" do
   before do

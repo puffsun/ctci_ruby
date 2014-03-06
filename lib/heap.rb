@@ -2,7 +2,7 @@
 module DataStructure
 
   class Heap
-    def initialize( *elements, &comp )
+    def initialize(*elements, &comp)
       @heap = [nil]
       @comp = comp || lambda { |p, c| p <=> c }
 

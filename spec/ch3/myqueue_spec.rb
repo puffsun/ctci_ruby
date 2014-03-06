@@ -1,5 +1,5 @@
 
-require_relative '../../lib/queue'
+require_relative '../spec_helper'
 
 describe Ch3::MyQueue do
   let(:my_queue) {Ch3::MyQueue.new}

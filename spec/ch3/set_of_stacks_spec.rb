@@ -1,5 +1,5 @@
 
-require_relative '../../lib/stack'
+require_relative '../spec_helper'
 
 describe Ch3::SetOfStacks do
   let(:sos) {Ch3::SetOfStacks.new(3)}

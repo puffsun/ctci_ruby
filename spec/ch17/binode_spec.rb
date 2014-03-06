@@ -1,6 +1,5 @@
 
 require_relative "../spec_helper"
-require_relative "../../lib/binode"
 
 describe Ch17::BiNode do
 

@@ -1,6 +1,5 @@
 
 require_relative '../spec_helper'
-require_relative '../../lib/extra_questions'
 
 describe "Modest questions" do
   describe "number of trailing zeros of factorial" do

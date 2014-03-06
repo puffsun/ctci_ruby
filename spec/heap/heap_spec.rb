@@ -1,5 +1,5 @@
 
-require_relative '../../lib/heap'
+require_relative '../spec_helper'
 
 describe DataStructure::Heap do
 

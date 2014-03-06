@@ -1,5 +1,5 @@
 
-require_relative '../../lib/sort'
+require_relative '../spec_helper'
 
 describe "Sorting algorithms" do
   before do

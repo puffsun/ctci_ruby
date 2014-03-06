@@ -1,5 +1,5 @@
 
-require_relative '../../lib/tree'
+require_relative '../spec_helper'
 
 describe Ch4::BinaryTree do
   let(:bt) {Ch4::BinaryTree.new}

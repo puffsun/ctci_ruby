@@ -1,5 +1,5 @@
 
-require_relative '../../lib/bits_op'
+require_relative '../spec_helper'
 
 describe "insert m bits from i to j in n bits" do
   it "should give the correct result" do

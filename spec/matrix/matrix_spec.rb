@@ -1,5 +1,5 @@
 
-require_relative '../../lib/matrix'
+require_relative '../spec_helper'
 
 describe "Rotation" do
   it "shall rotate squares" do

@@ -1,5 +1,5 @@
 
-require_relative '../../lib/stack'
+require_relative '../spec_helper'
 
 describe Ch3::Stacks do
   it "should not be instantiated" do

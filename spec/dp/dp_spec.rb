@@ -1,6 +1,5 @@
 
 require_relative '../spec_helper'
-require_relative '../../lib/dp'
 
 describe "Dynamic Programming Problems" do
   describe "Minimum steps to one" do

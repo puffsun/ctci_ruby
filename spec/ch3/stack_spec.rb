@@ -1,4 +1,5 @@
-require_relative '../../lib/stack'
+
+require_relative '../spec_helper'
 
 describe Ch3::Stack do
 
