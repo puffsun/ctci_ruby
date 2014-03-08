@@ -58,4 +58,60 @@ describe "Linked list related algorithms" do
       end
     end
   end
+
+  describe "add two numbers in reverse order stored in two linked lists" do
+
+    it "should return correct result with equal size lists" do
+      num1 = Ch2::LinkedList.new.add(7).add(1).add(6)
+      num2 = Ch2::LinkedList.new.add(5).add(9).add(2)
+      result = Ch2::add_lists_reverse(num1.head, num2.head)
+      result.value.should == 2
+      result.next.value.should == 1
+      result.next.next.value.should == 9
+      result.next.next.next.should be_nil
+    end
+
+    it "should behave correct if list size not equal" do
+      num1 = Ch2::LinkedList.new.add(7).add(1)
+      num2 = Ch2::LinkedList.new.add(5).add(9).add(9)
+      result = Ch2::add_lists_reverse(num1.head, num2.head)
+      result.value.should == 2
+      result.next.value.should == 1
+      result.next.next.value.should == 0
+      result.next.next.next.value.should == 1
+      result.next.next.next.next.should be_nil
+    end
+  end
+
+  describe "find the start of loop" do
+    before do
+      @list = Ch2::LinkedList.new.add("a").add("b").add("c").add("d").add("e")
+    end
+
+    it "should return nil if no loop" do
+      Ch2::find_beginning_of_loop(@list.head).should be_nil
+    end
+
+    it "should return the beginning of loop" do
+      @list.tail.next = @list.head.next
+      Ch2::find_beginning_of_loop(@list.head).value.should eql("b")
+    end
+  end
+
+  describe "check if a linked list if palindrome" do
+
+    it "should return true if passed in nil" do
+      Ch2::palindrome?(nil).should be_true
+    end
+
+    it "should return false if list is not palindrome" do
+      list = Ch2::LinkedList.new.add("a").add("b").add("c").add("b")
+      Ch2::palindrome?(list.head).should be_false
+    end
+
+    it "should return true if list is palindrome" do
+      list = Ch2::LinkedList.new.add("a").add("b").add("c").add("b").add("a")
+      Ch2::palindrome?(list.head).should be_true
+    end
+  end
  end
