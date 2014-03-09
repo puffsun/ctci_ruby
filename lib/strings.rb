@@ -1,4 +1,7 @@
 
+require "pry"
+require "pry-debugger"
+
 module Ch1
   # determine if a string has all unique characters
   # without using additional data structures?
@@ -42,5 +45,57 @@ module Ch1
       new_str[i] = "%20" if new_str[i].eql?(' ')
     end
     new_str
+  end
+
+  # basic string compression using the counts of repeated characters.
+  # For example, the string aabcccccaaa would become a2blc5a3.
+  # If the "compressed" string would not become smaller than
+  # the original string, your method should return the original string.
+  def self.compress(str)
+    return nil if str.nil?
+    str_arr = str.split("")
+    return str if count_compression(str_arr) >= str.length
+    prev = str_arr[0]
+    count = 0
+    res = str_arr.inject("") do |r, e|
+      if e.eql?(prev)
+        count += 1
+      else
+        r += "#{prev}#{count}"
+        count = 1
+      end
+      prev = e
+      r
+    end
+    res += "#{prev}#{count}"
+  end
+
+  private
+
+  def self.count_compression(arr)
+    return 0 if arr.length == 0
+    prev = arr[0]
+    # + 2 in the end because the last one of more elements will be missed
+    arr.inject(0) do |r, e|
+      r += 2 unless e.eql?(prev)
+      prev = e
+      r
+    end + 2
+  end
+
+  public
+
+  # Assume you have a method substring? which checks if one word
+  # is a substring of another. Given two strings, s1 and s2, write code
+  # to check if s2 is a rotation of s1 using only one call to substring?
+  # (e.g.,"waterbottle"is a rotation of"erbottlewat")
+  #
+  # PS. in Ruby, there's an instance method call include? in string
+  # we can use it as alternative of substring?
+  def self.rotation?(str1, str2)
+    return false if str1.nil? or str2.nil?
+    return false unless str1.length == str2.length
+    return true if (str1 + str1).include?(str2)
+    false
   end
 end

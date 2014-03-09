@@ -48,4 +48,41 @@ describe "String related algorithms" do
       Ch1::convert("Mr John Smith   ").should eql("Mr%20John%20Smith")
     end
   end
+
+  describe "basic string compression" do
+
+    it "should return nil if nil passed in" do
+      Ch1::compress(nil).should be_nil
+    end
+
+    it "should return original string if compressed one is not smaller than original" do
+      Ch1::compress("a").should eql("a")
+      Ch1::compress("ab").should eql("ab")
+    end
+
+    it "should return compressed string if it is smaller than original one" do
+      Ch1::compress("aabcccccaaa").should eql("a2b1c5a3")
+    end
+  end
+
+  describe "check if str2 is rotation of str1" do
+
+    it "should return false if nil passed in as arguments" do
+      Ch1::rotation?(nil, nil).should be_false
+      Ch1::rotation?(nil, "").should be_false
+      Ch1::rotation?("", nil).should be_false
+    end
+
+    it "should return false if not" do
+      str1 = "abc"
+      str2 = "cde"
+      Ch1::rotation?(str1, str2).should be_false
+    end
+
+    it "should return true if yes" do
+      str1 = "erbottlewat"
+      str2 = "waterbottle"
+      Ch1::rotation?(str1, str2).should be_true
+    end
+  end
 end
