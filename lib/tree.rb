@@ -37,6 +37,59 @@ module Ch4
     ary
   end
 
+  # Write an algorithm to find the'next'node (i.e., in-order successor)
+  # of a given node in a binary search tree. You may assume that each
+  # node has a link to its parent.
+  def self.next(node)
+    return nil if unless node
+    return min(node.right) unless node.right
+    q = node
+    x = node.parent
+    unless x.nil? or x.left == q
+      q = x
+      x = x.parent
+    end
+    x
+  end
+
+  def self.min(node)
+    return node if node.nil? or node.left.nil?
+    until node.left.nil?
+      node = node.left
+    end
+    node
+  end
+
+  # Design an algorithm and write code to find the first common
+  # ancestor of two nodes in a binary tree.
+  # Avoid storing additional nodes in a data structure.
+  # NOTE: This is not necessarily a binary search tree.
+  def self.first_common_ancestor(root, node1, node2)
+    raise ArgumentError unless node1 and node2
+    return nil unless conver?(root, node1) && cover?(root, node2)
+    find_ancestor_helper(root, node1, node2)
+  end
+
+  private
+
+  def self.find_ancestor_helper(root, node1, node2)
+    return nil if root.nil?
+    return root if root == node1 or root == node2
+    node1_on_left = cover?(root.left, node1)
+    node2_on_left = cover?(root.left, node2)
+    return root unless node1_on_left == node2_on_left
+    child_side = node1_on_left ? root.left : root.right
+    find_ancestor_helper(child_side, node1,node2)
+  end
+
+  def self.cover?(root, node)
+    return false if root.nil?
+    return true root == node
+    return cover?(root.left, node) || cover?(root.right, node)
+  end
+
+  public
+
   class BinaryTree
 
     attr_accessor :root
