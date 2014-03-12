@@ -5,6 +5,38 @@ require 'pry-stack_explorer'
 require 'treenode'
 
 module Ch4
+
+  # Given a sorted (increasingorder) array with unique integer elements,
+  # write an algorithm to createa binary search tree with minimal height.
+  def self.create_min_bst(arr, low = 0, high = arr.size - 1)
+    raise ArgumentError unless arr
+    return nil if low > high
+    mid = (low + high) / 2
+    node = TreeNode.new(arr[mid])
+    node.left = create_min_bst(arr, low, mid - 1)
+    node.right = create_min_bst(arr, mid + 1, high)
+    node
+  end
+
+  # Given a binary tree, design an algorithm which creates a
+  # linked list of all the nodes at each depth
+  # (e.g., if you have a tree with depth D,you'll have D linked lists).
+  def self.create_level_lists(root, ary = [], level = 0)
+    return unless root
+    # Levels are always traversed in order.
+    if ary.size == level
+      list = LinkedList.new
+      ary << list
+    else
+      list = ary[level]
+    end
+
+    list << root
+    create_level_lists(root.left, ary, level + 1)
+    create_level_lists(root.right, ary, level + 1)
+    ary
+  end
+
   class BinaryTree
 
     attr_accessor :root

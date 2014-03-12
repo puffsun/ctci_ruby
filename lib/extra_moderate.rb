@@ -183,6 +183,9 @@ module Ch17
     max
   end
 
+  # Best solution to this question in my mind is to sort the array first
+  # next, we will search x from left side,
+  # then search sum - x from right side
   def self.pair_sum(ary, num)
     raise ArgumentError unless ary
     pairs = {}
