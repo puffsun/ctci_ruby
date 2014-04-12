@@ -41,7 +41,7 @@ module Ch4
   # of a given node in a binary search tree. You may assume that each
   # node has a link to its parent.
   def self.next(node)
-    return nil if unless node
+    return nil unless node
     return min(node.right) unless node.right
     q = node
     x = node.parent
@@ -84,7 +84,7 @@ module Ch4
 
   def self.cover?(root, node)
     return false if root.nil?
-    return true root == node
+    return true if root == node
     return cover?(root.left, node) || cover?(root.right, node)
   end
 
@@ -201,5 +201,4 @@ module Ch4
       match_tree?(node1.left, node2.left) && match_tree?(node1.right, node2.right)
     end
   end
-
 end

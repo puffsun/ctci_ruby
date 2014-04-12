@@ -37,6 +37,27 @@ module Ch1
     true
   end
 
+  def self.permutation(str)
+    return nil unless str
+    return str if str.length == 1
+    return permute_with_prefix("", str)
+  end
+
+  def self.permute_with_prefix(prefix, str)
+    result = []
+    len = str.length
+    if len == 0
+      return result << prefix
+    else
+      0.upto(len - 1) do |i|
+        left = str.slice(0...i)
+        right = str.slice((i+1)...len)
+        result <<  permute_with_prefix(prefix + str[i], left + right)
+      end
+    end
+    result.flatten
+  end
+
   # Write a method to replace all spaces in a string with'%20'.
   def self.convert(str)
     return nil if str.nil?

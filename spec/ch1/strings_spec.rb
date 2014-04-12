@@ -38,6 +38,21 @@ describe "String related algorithms" do
     end
   end
 
+  describe "get all permutation of a string" do
+    it "should return nil if passed in nil" do
+      Ch1::permutation(nil).should be_nil
+    end
+
+    it "should get the same str if single character passed in" do
+      Ch1::permutation('a').should eql('a')
+    end
+
+    it "should get all of permutation" do
+      Ch1::permutation('ab').should include("ab")
+      Ch1::permutation('ab').should include("ba")
+    end
+  end
+
   describe "convert all spaces into %20" do
 
     it "should return nil with nil argument" do
