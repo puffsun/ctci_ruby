@@ -96,7 +96,7 @@ module Ch1
   def self.count_compression(arr)
     return 0 if arr.length == 0
     prev = arr[0]
-    # + 2 in the end because the last one of more elements will be missed
+    # + 2 in the end or the last one of more elements will be missed
     arr.inject(0) do |r, e|
       r += 2 unless e.eql?(prev)
       prev = e
