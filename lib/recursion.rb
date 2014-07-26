@@ -48,10 +48,10 @@ module Ch9
 
   # this method functions properly even with duplicate elements in the array.
   def self.search_magic_index(ary)
-    search_magic_index(ary, 0, ary.size - 1)
+    search_magic_index_recursive(ary, 0, ary.size - 1)
   end
 
-  def self.search_magic_index(ary, low, high)
+  def self.search_magic_index_recursive(ary, low, high)
     return -1 if (high < low || low < 0 || high >= ary.size)
     mid_index = (low + high) / 2
     mid_value = ary[mid_index]
@@ -59,12 +59,12 @@ module Ch9
 
     # search left of middle index
     left_index = [mid_index - 1, mid_value].min
-    left = search_magic_index(ary, start, left_index)
+    left = search_magic_index_recursive(ary, start, left_index)
     return left if left >= 0
 
     # search right of middle index
     right_index = [mid_index + 1, mid_value].max
-    search_magic_index(ary, right_index, high)
+    search_magic_index_recursive(ary, right_index, high)
   end
 
   # all of subsets of the set: http://en.wikipedia.org/wiki/Power_set
