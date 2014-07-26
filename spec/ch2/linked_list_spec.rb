@@ -20,8 +20,8 @@ describe Ch2::LinkedList do
 
     it "should have 4 elements" do
       @list.size.should == 4
-      @list.include?("a").should be_true
-      @list.include?("d").should be_true
+      @list.include?("a").should == true
+      @list.include?("d").should == true
       @list.tail.value.should eql "b"
       @list.head.value.should eql "d"
     end
@@ -29,7 +29,7 @@ describe Ch2::LinkedList do
     it "should support remove operations" do
       @list.remove("a")
       @list.size.should == 3
-      @list.include?("a").should be_false
+      @list.include?("a").should == false
       @list.tail.value.should eql "b"
       @list.head.value.should eql "d"
     end

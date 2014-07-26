@@ -1,7 +1,6 @@
 
 require 'pry'
 require 'pry-debugger'
-require 'pry-stack_explorer'
 require 'treenode'
 
 module Ch4

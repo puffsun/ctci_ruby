@@ -21,9 +21,9 @@ describe Ch4::BreadthFirstPaths do
     end
 
     it "should have path" do
-      @bfs.path_to?(2).should be_true
-      @bfs.path_to?(3).should be_true
-      @bfs.path_to?(1).should be_true
+      @bfs.path_to?(2).should == true
+      @bfs.path_to?(3).should == true
+      @bfs.path_to?(1).should == true
       @bfs.dist_to(1).should eql(1)
       @bfs.dist_to(2).should eql(2)
       @bfs.dist_to(3).should eql(1)
@@ -34,8 +34,8 @@ describe Ch4::BreadthFirstPaths do
     end
 
     it "should not have path" do
-      @bfs.path_to?(4).should be_false
-      @bfs.path_to(4).should be_nil
+      @bfs.path_to?(4).should == nil
+      @bfs.path_to(4).should == nil
     end
   end
 end

@@ -3,7 +3,6 @@ require 'queue'
 require 'min_max'
 require 'pry'
 require 'pry-debugger'
-require 'pry-stack_explorer'
 
 
 module Ch4

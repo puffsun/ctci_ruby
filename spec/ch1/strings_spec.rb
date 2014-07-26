@@ -5,36 +5,36 @@ describe "String related algorithms" do
   describe "determine if string has unique characters" do
 
     it "should return true if nil passed in" do
-      Ch1::unique?(nil).should be_true
+      Ch1::unique?(nil).should == true
     end
 
     it "should return true if all characters are unique" do
       str = "abc"
-      Ch1::unique?(str).should be_true
+      Ch1::unique?(str).should == true
     end
 
     it "should return false if not unique" do
       str = "abca"
-      Ch1::unique?(str).should be_false
+      Ch1::unique?(str).should == false
     end
   end
 
   describe "determine if one string is permutation of another" do
 
     it "should return true if both of them are nil" do
-      Ch1::permutation?(nil, nil).should be_true
+      Ch1::permutation?(nil, nil).should == true
     end
 
     it "should return false if only one of them is nil" do
-      Ch1::permutation?(nil, "").should be_false
+      Ch1::permutation?(nil, "").should == false
     end
 
     it "should return true if one is permutation of the other" do
-      Ch1::permutation?("abc", "cba").should be_true
+      Ch1::permutation?("abc", "cba").should == true
     end
 
     it "should return false otherwise" do
-      Ch1::permutation?("abc", "abb").should be_false
+      Ch1::permutation?("abc", "abb").should == false
     end
   end
 
@@ -83,21 +83,21 @@ describe "String related algorithms" do
   describe "check if str2 is rotation of str1" do
 
     it "should return false if nil passed in as arguments" do
-      Ch1::rotation?(nil, nil).should be_false
-      Ch1::rotation?(nil, "").should be_false
-      Ch1::rotation?("", nil).should be_false
+      Ch1::rotation?(nil, nil).should == false
+      Ch1::rotation?(nil, "").should == false
+      Ch1::rotation?("", nil).should == false
     end
 
     it "should return false if not" do
       str1 = "abc"
       str2 = "cde"
-      Ch1::rotation?(str1, str2).should be_false
+      Ch1::rotation?(str1, str2).should == false
     end
 
     it "should return true if yes" do
       str1 = "erbottlewat"
       str2 = "waterbottle"
-      Ch1::rotation?(str1, str2).should be_true
+      Ch1::rotation?(str1, str2).should == true
     end
   end
 end

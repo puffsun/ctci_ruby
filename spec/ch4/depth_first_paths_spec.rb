@@ -20,17 +20,17 @@ describe Ch4::DepthFirstPaths do
     end
 
     it "should have path" do
-      @dfs.path_to?(1).should be_true
-      @dfs.path_to?(2).should be_true
-      @dfs.path_to?(3).should be_true
+      @dfs.path_to?(1).should == true
+      @dfs.path_to?(2).should == true
+      @dfs.path_to?(3).should == true
 
       @dfs.path_to(1).should eql([0, 1])
-      @dfs.path_to(2).include?(0).should be_true
+      @dfs.path_to(2).include?(0).should == true
     end
 
     it "should not have path" do
-      @dfs.path_to?(4).should be_false
-      @dfs.path_to(4).should be_nil
+      @dfs.path_to?(4).should == nil
+      @dfs.path_to(4).should == nil
     end
   end
 end

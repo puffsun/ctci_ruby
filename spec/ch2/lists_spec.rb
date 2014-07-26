@@ -101,17 +101,17 @@ describe "Linked list related algorithms" do
   describe "check if a linked list if palindrome" do
 
     it "should return true if passed in nil" do
-      Ch2::palindrome?(nil).should be_true
+      Ch2::palindrome?(nil).should == true
     end
 
     it "should return false if list is not palindrome" do
       list = Ch2::LinkedList.new.add("a").add("b").add("c").add("b")
-      Ch2::palindrome?(list.head).should be_false
+      Ch2::palindrome?(list.head).should == false
     end
 
     it "should return true if list is palindrome" do
       list = Ch2::LinkedList.new.add("a").add("b").add("c").add("b").add("a")
-      Ch2::palindrome?(list.head).should be_true
+      Ch2::palindrome?(list.head).should == true
     end
   end
  end

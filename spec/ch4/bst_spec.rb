@@ -28,11 +28,11 @@ describe Ch4::BinSearchTree do
       bst.put(:b, "b").put(:a, "a").put(:c, "c")
     end
     it "should support normal Binary Search Tree operations" do
-      bst.empty?.should be_false
+      bst.empty?.should == false
       bst.size.should eql(3)
-      bst.include?(:a).should be_true
-      bst.include?(:z).should be_false
-      bst.bst?.should be_true
+      bst.include?(:a).should == true
+      bst.include?(:z).should == false
+      bst.bst?.should == true
 
       bst.get(:a).should eql("a")
       bst.get(:c).should eql("c")

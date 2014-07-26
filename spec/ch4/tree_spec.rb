@@ -26,7 +26,7 @@ describe Ch4::BinaryTree do
 
     it "should support Binary Tree operations" do
       bt.size.should eql(3)
-      bt.empty?.should be_false
+      bt.empty?.should == false
       bt.get(:a).should eql("a")
       bt.get(:c).should eql("c")
       bt.get(:z).should be_nil
@@ -36,9 +36,9 @@ describe Ch4::BinaryTree do
       bt.in_order.should eql(["a", "b", "c"])
       bt.post_order.should eql(["a", "c", "b"])
 
-      bt.balanced?.should be_true
+      bt.balanced?.should == true
       bt.put(:d, "d").put(:e, "e")
-      bt.balanced?.should be_false
+      bt.balanced?.should == false
     end
   end
 
@@ -51,7 +51,7 @@ describe Ch4::BinaryTree do
     end
 
     it "should match" do
-      @tree1.include_tree?(@tree2.root).should be_true
+      @tree1.include_tree?(@tree2.root).should == true
     end
   end
 end
