@@ -1,7 +1,4 @@
 
-require 'pry'
-require 'pry-debugger'
-
 module Ch11
 
   def self.bubble_sort!(ary)
@@ -136,7 +133,7 @@ module Ch11
     if r < size and ary[r] > ary[largest]
       largest = r
     end
-    if (largest != i)
+    if largest != i
       ary[i], ary[largest] = ary[largest], ary[i]
       max_heapify(ary, size, largest)
     end

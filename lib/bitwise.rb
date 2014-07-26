@@ -13,7 +13,7 @@ module Bitwise
     num & mask
   end
 
-  def self.clear_most_significant_thru_i_bits(num, i)
+  def self.clear_most_significant_i_bits(num, i)
     mask = (1 << i) - 1
     num & mask
   end

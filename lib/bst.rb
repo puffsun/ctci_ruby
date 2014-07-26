@@ -1,9 +1,4 @@
 
-=begin
-require 'pry'
-require 'pry-debugger'
-require 'pry-stack_explorer'
-=end
 require 'treenode'
 
 module Ch4
@@ -47,18 +42,18 @@ module Ch4
     end
 
     def get(key)
-      return get_node(@root, key)
+      get_node(@root, key)
     end
 
     def get_node(node, key)
       return nil unless node
       cmp = (key <=> node.key)
       if cmp > 0
-        return get_node(node.right, key)
+        get_node(node.right, key)
       elsif cmp < 0
-        return get_node(node.left, key)
+        get_node(node.left, key)
       else
-        return node.value
+        node.value
       end
     end
 
@@ -83,7 +78,7 @@ module Ch4
         # You can refer to: http://en.wikipedia.org/wiki/Binary_search_tree#Deletion
         n = node
         node = min_node(n.right)
-        node.right = delete_min(n.right)
+        node.right = delete_min
         node.left = n.left
       end
       node.num_subtree = size_of_node(node.left) + size_of_node(node.right) + 1
@@ -92,12 +87,12 @@ module Ch4
 
     def min
       return nil if empty?
-      return min_node(@root).key
+      min_node(@root).key
     end
 
     def min_node(node)
       return node if node.left.nil?
-      return min_node(node.left)
+      min_node(node.left)
     end
 
     def delete_min
@@ -107,8 +102,8 @@ module Ch4
     def delete_min_node(node)
       return node.right if node.left.nil?
       node.left = delete_min_node(node.left)
-      node.num_subtree = size(node.left) + size(node.right) + 1
-      return node
+      node.num_subtree = size_of_node(node.left) + size_of_node(node.right) + 1
+      node
     end
 
     def include?(key)

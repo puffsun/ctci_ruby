@@ -1,6 +1,5 @@
 
 require 'pry'
-require 'pry-debugger'
 
 module Ch11
 
