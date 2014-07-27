@@ -6,7 +6,7 @@ module Ch11
   # given a sorted array,
   # find the first element that larger than key
   def self.first_larger(ary, key, low = 0, high = ary.length - 1)
-    raise ArgumentError unless ary and key > 0
+    raise ArgumentError unless ary
     return ary[low] if (low > high) and (low < ary.size)
     mid = (low + high) / 2
     if ary[mid] == key

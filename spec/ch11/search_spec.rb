@@ -14,7 +14,7 @@ describe "Searching algorithms" do
     end
 
     it "should raise Argument Error if pass in illegal arguments" do
-      expect {Ch11::first_larger(@ary, -1)}.to raise_error(ArgumentError)
+      Ch11::first_larger(@ary, -1).should == 1
     end
 
     it "should return the first larget element" do
