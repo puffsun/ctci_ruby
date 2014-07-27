@@ -9,7 +9,7 @@ module Ch4
     raise ArgumentError unless arr
     return nil if low > high
     mid = (low + high) / 2
-    node = TreeNode.new(arr[mid])
+    node = TreeNode.new(arr[mid], 0, 0)
     node.left = create_min_bst(arr, low, mid - 1)
     node.right = create_min_bst(arr, mid + 1, high)
     node
