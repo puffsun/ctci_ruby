@@ -1,6 +1,4 @@
 
-require 'pry'
-
 module Ch11
 
   # given a sorted array,

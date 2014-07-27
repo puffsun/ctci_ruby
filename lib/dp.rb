@@ -1,7 +1,4 @@
 
-require 'pry'
-require 'pry-debugger'
-
 module DP
   # On a positive integer, you can perform any one of the following 3 steps.
   #   1.) Subtract 1 from it. (n = n-1),

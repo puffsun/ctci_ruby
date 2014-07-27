@@ -1,9 +1,6 @@
 
 require 'queue'
 require 'min_max'
-require 'pry'
-require 'pry-debugger'
-
 
 module Ch4
   class Graph

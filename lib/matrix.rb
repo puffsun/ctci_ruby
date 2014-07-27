@@ -1,7 +1,4 @@
 
-require 'pry'
-require 'pry-debugger'
-
 module Matrix
 
   def self.rotate(matrix)

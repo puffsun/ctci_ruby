@@ -1,7 +1,4 @@
 
-require "pry"
-require "pry-debugger"
-
 module Ch1
   # determine if a string has all unique characters
   # without using additional data structures?

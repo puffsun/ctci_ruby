@@ -1,7 +1,4 @@
 
-require 'pry'
-require 'pry-debugger'
-
 module Ch17
 
   # Given a number, count the trailing zeros of the factorial of it.

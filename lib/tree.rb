@@ -1,6 +1,4 @@
 
-require 'pry'
-require 'pry-debugger'
 require 'treenode'
 
 module Ch4
