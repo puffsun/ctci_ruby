@@ -7,28 +7,22 @@ module Matrix
 
   def self.rotate_counterclockwise(matrix)
     n = []
-    height = matrix.size
-    width = matrix[0].size
-    (width - 1).downto(0) { |i|
-      line = []
-      height.times { |j|
-        line << matrix[j][i]
-      }
-      n << line
+    (matrix[0].size - 1).downto(0) { |i|
+      process_each_line(i, matrix, n)
     }
     n
   end
 
+  def self.process_each_line(i, matrix, n)
+    line = []
+    matrix.size.times { |j| line << matrix[j][i] }
+    n << line
+  end
+
   def self.rotate_clockwise(matrix)
     n = []
-    height = matrix.size
-    width = matrix[0].size
-    width.times { |i|
-      line = []
-      height.times { |j|
-        line << matrix[j][i]
-      }
-      n << line
+    matrix[0].size.times { |i|
+      process_each_line(i, matrix, n)
     }
     n
   end
