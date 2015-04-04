@@ -39,7 +39,7 @@ module Ch4
   # node has a link to its parent.
   def self.next(node)
     return nil unless node
-    return min(node.right) unless node.right
+    return min(node.right) if node.right
     q = node
     x = node.parent
     unless x.nil? or x.left == q
